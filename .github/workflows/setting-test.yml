@@ -1,4 +1,4 @@
-name: React Typescript ESLint Prettier Husky Firebase Github Pages Settings
+name: pages-build-deployment
 
 on:
   push:
