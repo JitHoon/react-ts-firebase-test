@@ -6,14 +6,17 @@ on:
       - main
 
 jobs:
-  deployment:
+  build:
     runs-on: ubuntu-latest
-    environment: production
+
     steps:
-      - name: Deploy with gh-pages
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Build
         run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${react-ts-firebase-test}.git
-          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+          npm install
+          npm run-script build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
@@ -23,3 +26,10 @@ jobs:
           REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
           REACT_APP_PROJECTED_ID: ${{ secrets.REACT_APP_PROJECTED_ID }}
           REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
