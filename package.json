@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://JitHoon/github.io/react-ts-firebase-test/",
+  "homepage": "https://jithoon.github.io/react-ts-firebase-test/",
   "browserslist": {
     "production": [
       ">0.2%",
