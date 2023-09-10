@@ -1,0 +1,21 @@
+name: React Typescript ESLint Prettier Husky Firebase Github Pages Settings
+
+on:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Set environment variables
+        run: |
+          echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> $GITHUB_ENV
+          echo "REACT_APP_APP_ID=${{ secrets.REACT_APP_APP_ID }}" >> $GITHUB_ENV
+          echo "REACT_APP_AUTH_DOMAIN=${{ secrets.REACT_APP_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "REACT_APP_MEASUREMENT_ID=${{ secrets.REACT_APP_MEASUREMENT_ID }}" >> $GITHUB_ENV
+          echo "REACT_APP_MESSAGING_SENDER_ID=${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "REACT_APP_PROJECTED_ID=${{ secrets.REACT_APP_PROJECTED_ID }}" >> $GITHUB_ENV
+          echo "REACT_APP_STORAGE_BUCKET=${{ secrets.REACT_APP_STORAGE_BUCKET }}" >> $GITHUB_ENV
