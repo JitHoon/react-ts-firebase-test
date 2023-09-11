@@ -3,7 +3,7 @@ import React from "react";
 import createTestDoc from "./modules/CreateDoc";
 import createTestImg from "./modules/CreateImg";
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <header className="App-header">
